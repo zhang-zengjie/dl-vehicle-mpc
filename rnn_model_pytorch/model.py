@@ -94,3 +94,4 @@ class PredictionNet(nn.Module):
         return pred_out.permute(1, 2, 0)
 
 
+#Train Latent ODE Network with Irregularly Sampled Time-Series Data

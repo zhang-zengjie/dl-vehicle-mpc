@@ -361,6 +361,7 @@ control_vehicles_predicted{2}=u02;
 % Maneuver2=maneuver(2);
 % Maneuver3=maneuver(3);
 
+load('policy.mat');
 
 tic
 % figure
@@ -428,9 +429,11 @@ for iter=1:40
         TV_to_DL=TV_His_DL;   %% This is data to DL
         
         %%% call DL
-        TV_DLpredicted = net_test(TV_to_DL); % call DL   %%% Get the Predicted trajectory of TV from DL   size: x_TV_DLpredicted 0.1*20= 2s 
+%        TV_DLpredicted = net_test(TV_to_DL); % call DL   %%% Get the Predicted trajectory of TV from DL   size: x_TV_DLpredicted 0.1*20= 2s 
 %         TV_DLpredicted = net(TV_to_DL); % call DL   %%% Get the Predicted trajectory of TV from DL   size: x_TV_DLpredicted 0.1*20= 2s 
         
+        pred_label = predict(net, TV_to_DL', SequencePaddingDirection="left");
+        TV_DLpredicted = pred_label(:, 1:20)';
         %%% Sampling   2s:0.1*20  ---> 2s: 0.2*10
         TV_prediction_x=TV_DLpredicted(1:2:end,1);  
         TV_prediction_y=TV_DLpredicted(1:2:end,2);
