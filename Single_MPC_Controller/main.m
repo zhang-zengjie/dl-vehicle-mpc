@@ -360,7 +360,6 @@ control_vehicles_predicted{2}=u02;
 % Maneuver1=maneuver(1);
 % Maneuver2=maneuver(2);
 % Maneuver3=maneuver(3);
-
 load('policy.mat');
 
 tic
@@ -428,12 +427,24 @@ for iter=1:40
         TV_His_DL(:,1)=TV_His_DL1(:,1)-Xoffset;    % x-offset
         TV_to_DL=TV_His_DL;   %% This is data to DL
         
+        %Detect NaN in TV_to_DL
+        TF=isnan(TV_to_DL(:,1));
+        %Detect the number of the NaN
+        SumNaN=sum(TF);
+        %Replace the NaN by some values calculated according to the
+        %velocity of TV
+        for k=SumNaN:1:1
+            TV_to_DL(k,1)=TV_to_DL(k+1,1)-v_TV*T;
+            TV_to_DL(k,2)=TV_to_DL(k+1,2);
+        end
+
         %%% call DL
 %        TV_DLpredicted = net_test(TV_to_DL); % call DL   %%% Get the Predicted trajectory of TV from DL   size: x_TV_DLpredicted 0.1*20= 2s 
 %         TV_DLpredicted = net(TV_to_DL); % call DL   %%% Get the Predicted trajectory of TV from DL   size: x_TV_DLpredicted 0.1*20= 2s 
         
         pred_label = predict(net, TV_to_DL', SequencePaddingDirection="left");
         TV_DLpredicted = pred_label(:, 1:20)';
+
         %%% Sampling   2s:0.1*20  ---> 2s: 0.2*10
         TV_prediction_x=TV_DLpredicted(1:2:end,1);  
         TV_prediction_y=TV_DLpredicted(1:2:end,2);
