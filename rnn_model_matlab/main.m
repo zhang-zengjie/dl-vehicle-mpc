@@ -19,7 +19,7 @@ history_len = round(history_time / sampling_rate);
 predict_len = round(prediction_time / sampling_rate);
 
 num_velocities = 150;
-lanes = [y_lane_up, y_lane_down];
+lanes = [y_lane_down, y_lane_up];
 horizons = [history_len, predict_len];
 t_stage = [t_stage_0, t_stage_1, t_stage_2, t_stage_3];
 
@@ -28,7 +28,7 @@ shuffle_index = randperm(data_len);
 samples = sample_frame(shuffle_index);
 labels = label_frame(shuffle_index);
 
-Training_FLAG = 0;
+Training_FLAG = 1;
 num_training = floor(split_ratio(1)*data_len);
 
 training_samples = samples(1:num_training);
@@ -77,4 +77,12 @@ end
 
 pred_labels = predict(net, test_samples, SequencePaddingDirection="left");
 num = 310;
+
 visualize_test(test_samples{num}, test_labels{num}, pred_labels{num});
+RMSE_vec = calculate_cell_rmse(pred_labels, test_labels);
+RMSE_test = rmse(RMSE_vec, zeros(size(RMSE_vec)));
+
+hist_test = histogram(RMSE_vec, 0:0.5:20);
+%hist_test.EdgeColor = 'none';
+
+
