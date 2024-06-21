@@ -12,7 +12,7 @@ A demonstration of controlling an ego autonomous vehicle incorporating the targe
 This demonstration considers a highway scenario where an agent-driving ego vehicle moves along the central lane while avoiding collisions with a human-driving target vehicle cutting in from the slow lane, as shown in **Fig. 1**. A **recursive neural network** with **long short-term memory (LSTM)** units is trained to predict the trajectory of the target vehicle according to its historical trajectories. Based on the predicted trajectory, a **model predictive control (MPC)** is used to allow safe maneuvering for the ego. **Fig. 1** showcases the resulting trajectories of both vehicles. **Fig. 1** is an example of trajectory prediction
 
 
-<img src="figures/trajectory.svg" alt="Description" width="800">
+<img src="figures/trajectory.svg" alt="Description" width="900">
 
 **Fig 1. the highway driving scenario.**
 
@@ -35,20 +35,20 @@ The files are organized as the following structure:
 README.md                   % This read-me file
 LICENSE                     % The license file
 main.m                      % The main code script
-/config
+config/
     param.m                 % The script to render parameters
-/libs
-    /controller             % Functions related to control
-    /collision              % Functions related to collision detection
-    /draw                   % Functions related to visualization
-    /training               % Functions related to predictor training
+libs/
+    controller             % Functions related to control
+    collision              % Functions related to collision detection
+    draw                   % Functions related to visualization
+    training               % Functions related to predictor training
 ```
 
 
 ### Quick Run
 
 - Run the main script `main.m`;
-- The rnn predictor and its training information will be saved in `/policy/`;
-- The control results will be saved in `/data/`;
-- All figures will be saved in `/figures/`.
+- The rnn predictor and its training information will be saved in `policy/`;
+- The control results will be saved in `data/`;
+- All figures will be saved in `figures/`.
 
