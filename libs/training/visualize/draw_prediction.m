@@ -41,14 +41,20 @@ function draw_prediction(states_vehicles, dt)
     
     axis([16, 124, -1, 16]);
     
-    ylabel('$y$ (m)','Interpreter','latex', 'FontSize', 11);
-    xlabel('$x$ (m)','Interpreter','latex', 'FontSize', 11);   
+    title(sprintf('Trajectory prediction'),'interpreter','latex','FontSize',12)
+    ylabel('$y$ (m)','Interpreter','latex', 'FontSize', 12);
+    xlabel('$x$ (m)','Interpreter','latex', 'FontSize', 12);   
     
+    ax = gca;
+    ax.XAxis.FontSize = 12;
+    ax.YAxis.FontSize = 12;
+    ax.XAxis.TickLabelInterpreter = 'latex';
+
     x0=500;
     y0=50;
     width=500;
     height=180;
     
     set(gcf,'position',[x0,y0,width,height]);
-    legend([he, ht, hp],{'EV','TV', 'Prediction'});
+    legend([he, ht, hp], {'EV','TV', 'Prediction'}, 'Orientation', 'horizontal');
     hold off;

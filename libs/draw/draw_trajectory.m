@@ -18,7 +18,7 @@ position_x=states(:,1);
 position_y=states(:,2);
 end_x=200;
 plot(position_x', position_y', '*', 'linewidth',3,'color',colors_vehicles(i,:))
-title(sprintf('Trajectory of vehicles'),'interpreter','latex','FontSize',fontsize_labels+4)
+title(sprintf('Trajectory of vehicles'),'interpreter','latex','FontSize',12)
 axis([0 end_x -1 16])
 ylabel('$y$','interpreter','latex','FontSize',fontsize_labels)
 xlabel('$x$','interpreter','latex','FontSize',fontsize_labels)
@@ -35,7 +35,7 @@ hold on;
 plot([0 end_x], [3*w_lane 3*w_lane], '-k', 'LineWidth', 1.5);
 hold on;
 f=get(gca,'Children');
-legend([f(6),f(5)],'Vehicle 1 - Robot','Vehicle 2 - Human')
+legend([f(6),f(5)],'Vehicle 1 - robot driver','Vehicle 2 - human driver')
 set(gca,'FontSize',13)
 
 saveas(gcf, fullfile(figure_dir, 'trajectory_vehicles.fig'));

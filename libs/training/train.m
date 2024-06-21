@@ -2,7 +2,7 @@ function [policy, RMSE_test] = train(policy_dir, retrain, draw)
 
     rng(42);
     
-    batch_size = 64;
+    num_iterations = 62;
     learning_rate = 1e-3;
     num_epochs = 30;
     split_ratio = [0.6, 0.2, 0.2];
@@ -39,19 +39,17 @@ function [policy, RMSE_test] = train(policy_dir, retrain, draw)
     training_labels = labels(1:num_training);
     test_samples = samples(num_training + 1:end);
     test_labels = labels(num_training + 1:end);
+
+    batch_size = ceil(num_training/num_iterations);
     
     
     %% Model
     if Training_FLAG == retrain
     
         inputSize = 2;
-        embeddingSize = 32;
-        
         encoderRNNHiddenSize = 64;
         latentSize = 64;
         decoderRNNHiddenSize = 128;
-        
-        outputSize = 32;
         
         layers = [
             sequenceInputLayer(inputSize)

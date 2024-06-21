@@ -1,11 +1,13 @@
 param;
 
 if exist(fullfile(policy_dir, 'policy.mat'), 'file') == 2
-    load(fullfile(policy_dir, 'policy.mat'), 'policy');
+    retrain = false;
 else
-    draw_figures = true;
-    [policy, RMSE_test] = train(policy_dir, true, draw_figures);
+    retrain = true;
 end
+
+draw_figures = true;
+[policy, RMSE_test] = train(policy_dir, retrain, draw_figures);
 
 if (exist(fullfile(data_dir, 'states_vehicles.mat'), 'file') == 2) && ...
         (exist(fullfile(data_dir, 'control_vehicles.mat'), 'file') == 2) && ...
