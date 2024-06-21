@@ -9,7 +9,9 @@ A demonstration of controlling an ego autonomous vehicle incorporating the targe
 
 ### Scenario of demonstration
 
-This demonstration considers a highway scenario where an agent-driving ego vehicle moves along the central lane while avoiding collisions with a human-driving target vehicle cutting in from the slow lane, as shown in **Fig. 1**. A **recursive neural network** with **long short-term memory (LSTM)** units is trained to predict the trajectory of the target vehicle according to its historical trajectories. Based on the predicted trajectory, a **model predictive control (MPC)** is used to allow safe maneuvering for the ego. **Fig. 1** showcases the resulting trajectories of both vehicles. **Fig. 1** is an example of trajectory prediction
+This demonstration considers a highway scenario where an agent-driving ego vehicle moves along the central lane while avoiding collisions with a human-driving target vehicle cutting in from the slow lane, as shown in **Fig. 1**. A **recursive neural network** with **long short-term memory (LSTM)** units is trained to predict the trajectory of the target vehicle according to its historical trajectories. Based on the predicted trajectory, a **model predictive control (MPC)** is used to allow safe maneuvering for the ego. **Fig. 1** showcases the resulting trajectories of both vehicles. **Fig. 1** is an example of trajectory prediction.
+
+*: for the current version, the target vehicle is hardcoded using an 'S' shape spline.
 
 
 <img src="figures/trajectory.svg" alt="Description" width="900">
