@@ -38,10 +38,10 @@ main.m                      % The main code script
 config/
     param.m                 % The script to render parameters
 libs/
-    controller             % Functions related to control
-    collision              % Functions related to collision detection
-    draw                   % Functions related to visualization
-    training               % Functions related to predictor training
+    controller              % Functions related to control
+    collision               % Functions related to collision detection
+    draw                    % Functions related to visualization
+    training                % Functions related to predictor training
 ```
 
 
