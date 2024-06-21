@@ -1,4 +1,4 @@
-function draw_prediction(states_vehicles, dt)
+function draw_prediction(states_vehicles, dt, figure_dir)
 
     figure;
     hold on;
@@ -58,3 +58,4 @@ function draw_prediction(states_vehicles, dt)
     set(gcf,'position',[x0,y0,width,height]);
     legend([he, ht, hp], {'EV','TV', 'Prediction'}, 'Orientation', 'horizontal');
     hold off;
+    saveas(gcf, fullfile(figure_dir, 'segment.svg'));

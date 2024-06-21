@@ -1,4 +1,4 @@
-function draw_test_rmse(RMSE_vec)
+function draw_test_rmse(RMSE_vec, figure_dir)
 
     figure;
     histogram(RMSE_vec, 100);
@@ -17,3 +17,4 @@ function draw_test_rmse(RMSE_vec)
     
     set(gcf,'position',[x0,y0,width,height]);
     grid on;
+    saveas(gcf, fullfile(figure_dir, 'rmse_test.svg'));

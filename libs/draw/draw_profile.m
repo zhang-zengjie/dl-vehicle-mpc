@@ -1,4 +1,4 @@
-function [] = draw_profile(states_vehicles, control_vehicles)
+function [] = draw_profile(states_vehicles, control_vehicles, figure_dir)
 
 %% Figures settings
 fontsize_labels=12;
@@ -81,3 +81,5 @@ title(sprintf('State - orientation'),'interpreter','latex','FontSize',fontsize_l
 axis([0 50 -0.5 0.5]);
 grid on;
 hold off;
+
+saveas(gcf, fullfile(figure_dir, 'profile.svg'));

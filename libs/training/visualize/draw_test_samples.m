@@ -1,4 +1,4 @@
-function draw_test_samples(sample_traj, label_traj, prediction_traj)
+function draw_test_samples(sample_traj, label_traj, prediction_traj, figure_dir)
     
     figure;
     hold on;
@@ -25,3 +25,4 @@ function draw_test_samples(sample_traj, label_traj, prediction_traj)
     height=180;
     
     set(gcf,'position',[x0,y0,width,height]);
+    saveas(gcf, fullfile(figure_dir, 'prediction.svg'));

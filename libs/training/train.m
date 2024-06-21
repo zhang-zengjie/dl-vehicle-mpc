@@ -1,4 +1,4 @@
-function [policy, RMSE_test] = train(policy_dir, retrain, draw)
+function [policy, RMSE_test] = train(retrain, draw, policy_dir, figure_dir)
 
     rng(42);
     
@@ -91,9 +91,9 @@ function [policy, RMSE_test] = train(policy_dir, retrain, draw)
     RMSE_test = rmse(RMSE_vec, zeros(size(RMSE_vec)));
     
     if draw
-        draw_training_rmse(info.TrainingRMSE)
-        draw_test_rmse(RMSE_vec)
-        draw_test_samples(test_samples{num}, test_labels{num}, pred_labels{num});
+        draw_training_rmse(info.TrainingRMSE, figure_dir)
+        draw_test_rmse(RMSE_vec, figure_dir)
+        draw_test_samples(test_samples{num}, test_labels{num}, pred_labels{num}, figure_dir);
     end
 
 end

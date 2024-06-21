@@ -1,4 +1,4 @@
-function draw_training_rmse(training_rmse)
+function draw_training_rmse(training_rmse, figure_dir)
 
     figure;
     plot(training_rmse);
@@ -18,3 +18,4 @@ function draw_training_rmse(training_rmse)
     
     set(gcf,'position',[x0,y0,width,height]);
     grid on;
+    saveas(gcf, fullfile(figure_dir, 'rmse_training.svg'));
