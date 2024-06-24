@@ -1,6 +1,6 @@
 # Model Predictive Control of Autonomous Vehicles Incorporating Trajectories Predicted by Deep Learning (DL-MPC)
 
-**Author:** Zengjie Zhang (z.zhang3@tue.nl), Ni Dang (ni.dang@tum.de)
+**Authors:** **Zengjie Zhang** (z.zhang3@tue.nl), **Ni Dang** (ni.dang@tum.de)
 
 A demonstration of controlling an ego autonomous vehicle incorporating the target vehicle trajectory predicted by a recurrent neural network. For more details, refer to our ArXiv article at [https://arxiv.org/pdf/2310.02843](https://arxiv.org/pdf/2310.02843).
 
